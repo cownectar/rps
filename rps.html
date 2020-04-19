@@ -1,0 +1,76 @@
+<script>
+    let playerScore = 0;
+    let computerScore = 0;
+    var playerSelection;
+
+    function computerPlay(){
+        let hand = Math.floor(Math.random() * 3);
+        switch (hand){
+            case (0):
+                return 'rock';
+            
+            case (1):
+                return 'paper';
+
+            default:
+                return 'scissors';      
+        }
+    }
+
+    function playRound(playerSelection, computerSelection){
+        if (playerSelection === 'rock' && computerSelection === 'scissors'){
+            playerScore = playerScore + 1;
+            return 'You Win! Rock beats Scissors!';
+        } else if (playerSelection === 'rock' && computerSelection === 'paper'){
+            computerScore = computerScore + 1;
+            return 'You Lose! Paper beats Rock!';
+        } else if (playerSelection === 'rock' && computerSelection === 'rock'){
+            return 'A tie! Rock on Rock';
+        } else if (playerSelection === 'paper' && computerSelection === 'scissors'){
+            computerScore = computerScore + 1;
+            return 'You Lose! Scissors beats paper!';
+        } else if (playerSelection === 'paper' && computerSelection === 'paper'){
+            return 'A tie! Paper on Paper!';
+        } else if (playerSelection === 'paper' && computerSelection === 'rock'){
+            playerScore = playerScore + 1;
+            return 'You Win! Paper beats Rock!';
+        } else if (playerSelection === 'scissors' && computerSelection === 'scissors'){
+            return 'A tie! Scissors on Scissors!';
+        } else if (playerSelection === 'scissors' && computerSelection === 'paper'){
+            playerScore = playerScore + 1;
+            return 'You Win! Scissors beats Paper!';
+        } else if (playerSelection === 'scissors' && computerSelection === 'rock'){
+            computerScore = computerScore + 1;
+            return 'You Lose! Rock beats Paper!';
+        }
+
+    }
+
+    function game(){
+        playerSelection = prompt();
+        console.log (playRound(playerSelection, computerPlay()));
+        console.log('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
+        playerSelection = prompt();
+        console.log (playRound(playerSelection, computerPlay()));
+        console.log('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
+        playerSelection = prompt();
+        console.log (playRound(playerSelection, computerPlay()));
+        console.log('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
+        playerSelection = prompt();
+        console.log (playRound(playerSelection, computerPlay()));
+        console.log('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
+        playerSelection = prompt();
+        console.log (playRound(playerSelection, computerPlay()));
+        console.log('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
+    }
+
+    game();
+
+    if (playerScore > computerScore){
+        console.log('Congratulations! You Win!');
+    } else if (computerScore > playerScore){
+        console.log('You lose. Better Luck Next Time :(');
+    }else{
+        console.log('A TIE CUNT'); 
+    }
+</script>
